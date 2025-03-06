@@ -1,0 +1,9 @@
+.nowdiv{
+    background-color: var(--boxes-colors);
+    color: var(--boxes-colors-2);
+    min-height: 300px;
+    border-radius: 30px;
+    font-weight: 900;
+    padding: 30px;
+    text-align: left;
+}

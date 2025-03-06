@@ -1,0 +1,65 @@
+import { Children, createContext, useCallback, useEffect, useState, useContext } from "react";
+
+const Apikey = "0b72beb2df4afc6351f66e064b4f9b0d";
+const Default_Latitute = 28.6459661;
+const Default_longitude = 77.162929;
+
+const AppContext = createContext();
+
+const fetchData = async (url, setter) => {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setter(data)
+    } catch (error) {
+        console.log("Error While Fetching Data", error)
+    }
+}
+
+const AppProvider = () => {
+
+    const [latitude, setLatitiude] = useState(Default_Latitute)
+    const [longitude, setLongitude] = useState(Default_longitude)
+    const [currentWeatherData, setCurrentWeatherData] = useState(null)
+    const [ForcastData, setForcastData] = useState(null);
+    const [query, setQuery] = useState(null);
+    const [searchResult, setSearchResult] = useState()
+
+    const fetchWeatherData = useCallback(() => {
+        const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${Apikey}`;
+        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${Apikey}`;
+        fetchData(currentWeatherUrl, setCurrentWeatherData);
+        fetchData(forecastUrl, setForcastData)
+    }, [latitude, longitude])
+
+    const fetchGeoData = useCallback(() => {
+        if (query) {
+            const geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${Apikey}`;
+            fetchData(geoURL, setSearchResult)
+        }
+    }, [query])
+
+    useEffect(() => {
+        fetchWeatherData();
+        fetchGeoData()
+    }, [fetchWeatherData, fetchGeoData])
+
+    const value = {
+        query,
+        searchResult,
+        currentWeatherData,
+        ForcastData,
+        setLatitiude,
+        setLongitude,
+        setQuery,
+        setSearchResult
+    }
+
+    return <AppContext.Provider value={value}>{Children}</AppContext.Provider>
+}
+
+export function useAppContext() {
+    return useContext(AppContext);
+}
+
+export default AppProvider;

@@ -1,0 +1,8 @@
+.highlightdiv{
+    background-color: var(--boxes-colors);
+    color: var(--boxes-colors-2);
+    min-height: 325px;
+    border-radius: 30px;
+    padding: 30px;
+    text-align: left;
+}
