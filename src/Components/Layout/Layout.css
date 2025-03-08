@@ -9,7 +9,7 @@
 .leftContent{
   width: 66%;
   display: grid;
-  grid-template-columns: 26% 70%;
+  grid-template-columns: 0.75fr  2.25fr;
   margin: 0 auto;
   gap: 35px;
 }

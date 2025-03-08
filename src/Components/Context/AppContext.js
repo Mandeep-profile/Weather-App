@@ -1,7 +1,7 @@
 import { Children, createContext, useCallback, useEffect, useState, useContext } from "react";
 
 const Apikey = "0b72beb2df4afc6351f66e064b4f9b0d";
-const Default_Latitute = 28.6459661;
+const Default_Latitude = 28.6459661;
 const Default_longitude = 77.162929;
 
 const AppContext = createContext();
@@ -16,14 +16,14 @@ const fetchData = async (url, setter) => {
     }
 }
 
-const AppProvider = () => {
+const AppProvider = ({children}) => {
 
-    const [latitude, setLatitiude] = useState(Default_Latitute)
+    const [latitude, setLatitiude] = useState(Default_Latitude)
     const [longitude, setLongitude] = useState(Default_longitude)
     const [currentWeatherData, setCurrentWeatherData] = useState(null)
     const [ForcastData, setForcastData] = useState(null);
     const [query, setQuery] = useState(null);
-    const [searchResult, setSearchResult] = useState()
+    const [searchResult, setSearchResult] = useState(null)
 
     const fetchWeatherData = useCallback(() => {
         const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${Apikey}`;
@@ -41,8 +41,11 @@ const AppProvider = () => {
 
     useEffect(() => {
         fetchWeatherData();
-        fetchGeoData()
-    }, [fetchWeatherData, fetchGeoData])
+    }, []);
+
+    useEffect(() => {
+        fetchGeoData();
+    }, [fetchGeoData]);
 
     const value = {
         query,
@@ -53,9 +56,9 @@ const AppProvider = () => {
         setLongitude,
         setQuery,
         setSearchResult
-    }
+    };
 
-    return <AppContext.Provider value={value}>{Children}</AppContext.Provider>
+    return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
 
 export function useAppContext() {
