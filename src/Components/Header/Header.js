@@ -5,9 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 import "./Header.css"
-import Toggle from '../Toggle/Toggle';
 
 const Header = () => {
+
+  const handleSearchbar = () => {
+
+  }
+
   return (
     <header className='header'>
       <Link className='navLink'>
@@ -15,12 +19,11 @@ const Header = () => {
         <h1 className='heading'>Weatherpro</h1>
       </Link>
       <div>
-        <input className='searchInput' type='text' placeholder='Search...' />
+        <input className='searchInput' type='text' placeholder='Search...' onChange={handleSearchbar} autoComplete='off' />
       </div>
       <div>
         <button className='locationbtn'> <FontAwesomeIcon icon={faLocationDot} /> Current Location</button>
       </div>
-        <Toggle />
     </header>
   )
 }

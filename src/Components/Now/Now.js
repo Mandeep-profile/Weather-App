@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAppContext } from '../Context/AppContext'
+import { useAppContext } from '../Context/AppContext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import "./Now.css"

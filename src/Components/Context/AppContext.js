@@ -1,4 +1,4 @@
-import { Children, createContext, useCallback, useEffect, useState, useContext } from "react";
+import {createContext, useCallback, useEffect, useState, useContext } from "react";
 
 const Apikey = "0b72beb2df4afc6351f66e064b4f9b0d";
 const Default_Latitude = 28.6459661;
@@ -21,7 +21,7 @@ const AppProvider = ({children}) => {
     const [latitude, setLatitiude] = useState(Default_Latitude)
     const [longitude, setLongitude] = useState(Default_longitude)
     const [currentWeatherData, setCurrentWeatherData] = useState(null)
-    const [ForcastData, setForcastData] = useState(null);
+    const [forcastData, setForcastData] = useState(null);
     const [query, setQuery] = useState(null);
     const [searchResult, setSearchResult] = useState(null)
 
@@ -51,7 +51,7 @@ const AppProvider = ({children}) => {
         query,
         searchResult,
         currentWeatherData,
-        ForcastData,
+        forcastData,
         setLatitiude,
         setLongitude,
         setQuery,

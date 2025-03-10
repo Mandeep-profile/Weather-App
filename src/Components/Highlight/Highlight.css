@@ -1,7 +1,11 @@
+.hightlightmain{
+    width: 100%;
+    min-height: 325px;
+}
+
 .highlightdiv{
     background-color: var(--boxes-colors);
     color: var(--boxes-colors-2);
-    min-height: 325px;
     border-radius: 30px;
     padding: 30px;
     text-align: left;
@@ -49,4 +53,5 @@
 
 .subheading{
     font-size: 14px;
+    color: var(--sec-text-color);
 }

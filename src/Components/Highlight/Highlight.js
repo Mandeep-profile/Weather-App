@@ -7,7 +7,6 @@ import "./Highlight.css"
 const Highlight = () => {
 
   const { currentWeatherData } = useAppContext()
-  console.log(currentWeatherData);
 
   const FormatTime = (timeUnix, timezone) => {
     const date = new Date((timeUnix + timezone) * 1000);
