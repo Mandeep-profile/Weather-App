@@ -5,6 +5,7 @@
 
 .forcastheading{
     margin-bottom: 30px;
+    font-size: 20px;
 }
 
 .forcastdiv{
@@ -19,6 +20,7 @@
     display: flex;
     align-items: center;
     gap: 25px;
+    margin-top: 10px;
 }
 
 .weather-icon{

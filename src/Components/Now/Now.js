@@ -15,7 +15,7 @@ const Now = () => {
       </div>
       <div className='tempsection'>
         <p className='currenttemp'>{Math.round(currentWeatherData?.main?.temp || "")}°c</p>
-        <img className='iconimg' src={`https://openweathermap.org/img/wn/${currentWeatherData?.weather[0]?.icon}@2x.png`} alt='icon' />
+        <img className='iconimg' src={`https://openweathermap.org/img/wn/${currentWeatherData?.weather[0].icon}@2x.png`} alt='icon' />
       </div>
       <p className='tempdescription'>{currentWeatherData?.weather[0]?.description}</p>
       <div className='horizontalline'></div>

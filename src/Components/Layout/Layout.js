@@ -3,6 +3,7 @@ import Header from "../Header/Header"
 import Now from '../Now/Now'
 import Highlight from '../Highlight/Highlight'
 import Forcast from '../Forcast/Forcast'
+import Today from '../Today/Today'
 import "./Layout.css"
 
 const Layout = () => {
@@ -17,6 +18,7 @@ const Layout = () => {
             </section>
             <section className='rightContent'>
                 <Forcast />
+                <Today />
             </section>
         </div>
     )
