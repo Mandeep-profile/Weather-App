@@ -6,8 +6,13 @@
 
 .todaymain{
     overflow-x: auto;
+}
+
+.todaydiv{
+    overflow-x: auto;
     width: 100%;
 }
+
 
 .temp{
     background-color: var(--boxes-colors);

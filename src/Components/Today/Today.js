@@ -23,8 +23,8 @@ const Today = () => {
     
     return (
         <div className='todaymain'>
-            <div className='todaydiv'>
                 <h1 className='todayheading'>Today At</h1>
+            <div className='todaydiv'>
                 <div className='threehourtemp'>
                     {todayArr.map((item) => {
                         return <div className='temp'>
