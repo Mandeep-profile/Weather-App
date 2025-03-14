@@ -1,31 +1,74 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Logo from "../../Assets/logo.png"
+import React, { useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import Logo from "../../Assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { useAppContext } from "../Context/AppContext"
+import "./Header.css";
 
-import "./Header.css"
+const debounce = (func, delay) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => func(...args), delay)
+  }
+}
 
 const Header = () => {
 
-  const handleSearchbar = () => {
+  const inputRef = useRef(null)
+  const { searchResults, setSearchResults, setQuery, setLatitude, setLongitude } = useAppContext();
 
+  const handleInputChange = useCallback(
+    debounce((event) => {
+      const query = event.target.value.trim();
+      if (query === "" || query.length <= 2) {
+        setSearchResults([]);
+        return;
+      }
+      setQuery(query)
+    }, 1000),
+    [setQuery, setSearchResults]
+  )
+
+  const handleClick = (lat, lon) => {
+    setLatitude(lat);
+    setLongitude(lon);
+    setQuery(null);
+    setSearchResults([]);
   }
 
   return (
-    <header className='header'>
-      <Link className='navLink'>
-        <img className='logoImg' src={Logo} alt='Weather Logo' />
-        <h1 className='heading'>Weatherpro</h1>
+    <header className="header">
+      <Link to="/" className="navLink">
+        <img className="logoImg" src={Logo} alt="Weather Logo" />
+        <h1 className="heading">Weatherpro</h1>
       </Link>
-      <div>
-        <input className='searchInput' type='text' placeholder='Search...' onChange={handleSearchbar} autoComplete='off' />
-      </div>
-      <div>
-        <button className='locationbtn'> <FontAwesomeIcon icon={faLocationDot} /> Current Location</button>
-      </div>
-    </header>
-  )
-}
+      <div className="searchContainer">
+        <input
+          className="searchInput"
+          type="text"
+          ref={inputRef}
+          placeholder="Search..."
+          autoComplete="off"
+          onChange={handleInputChange}
+        />
 
-export default Header
+        <div className="searchResults">
+          {searchResults?.map((country) => (
+            <div key={country.lon} className="searchItem" onClick={() => handleClick(country.lat, country.lon)}>
+              <p className="searchItemName">{country.name}</p>
+              <p className="searchItemDetails">{country.state || ""} {country.country}</p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+      <button className="locationbtn">
+        <FontAwesomeIcon icon={faLocationDot} /> Current Location
+      </button>
+    </header>
+  );
+};
+
+export default Header;

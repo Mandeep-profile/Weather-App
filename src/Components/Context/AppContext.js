@@ -18,12 +18,12 @@ const fetchData = async (url, setter) => {
 
 const AppProvider = ({children}) => {
 
-    const [latitude, setLatitiude] = useState(Default_Latitude)
+    const [latitude, setLatitude] = useState(Default_Latitude)
     const [longitude, setLongitude] = useState(Default_longitude)
     const [currentWeatherData, setCurrentWeatherData] = useState(null)
     const [forcastData, setForcastData] = useState(null);
     const [query, setQuery] = useState(null);
-    const [searchResult, setSearchResult] = useState(null)
+    const [searchResults, setSearchResults] = useState([])
 
     const fetchWeatherData = useCallback(() => {
         const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${Apikey}`;
@@ -35,13 +35,13 @@ const AppProvider = ({children}) => {
     const fetchGeoData = useCallback(() => {
         if (query) {
             const geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${Apikey}`;
-            fetchData(geoURL, setSearchResult)
+            fetchData(geoURL, setSearchResults)
         }
     }, [query])
 
     useEffect(() => {
         fetchWeatherData();
-    }, []);
+    }, [fetchWeatherData, latitude, longitude]);
 
     useEffect(() => {
         fetchGeoData();
@@ -49,13 +49,13 @@ const AppProvider = ({children}) => {
 
     const value = {
         query,
-        searchResult,
+        searchResults,
         currentWeatherData,
         forcastData,
-        setLatitiude,
+        setLatitude,
         setLongitude,
         setQuery,
-        setSearchResult
+        setSearchResults
     };
 
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

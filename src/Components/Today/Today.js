@@ -8,8 +8,6 @@ const Today = () => {
     const { forcastData } = useAppContext()
     let todayArr = [];
 
-    console.log(forcastData);
-
     for (let i = 0; i < 8; i++) {
         const forecastItem = forcastData?.list[i];
         const date = new Date(forecastItem?.dt * 1000);
@@ -26,8 +24,8 @@ const Today = () => {
                 <h1 className='todayheading'>Today At</h1>
             <div className='todaydiv'>
                 <div className='threehourtemp'>
-                    {todayArr.map((item) => {
-                        return <div className='temp'>
+                    {todayArr.map((item, index) => {
+                        return <div className='temp' key={index}>
                             <p className='formattedtime'>{item.formattedTime}</p>
                             <img src={`https://openweathermap.org/img/wn/${item.forecastItem?.weather[0].icon}@2x.png`} alt='image_icon' className='image_icon'/>
                             <p className='formattedtemp'>{parseInt(item?.forecastItem?.main?.temp)}°C</p>

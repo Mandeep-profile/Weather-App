@@ -16,7 +16,6 @@ const Forcast = () => {
         const dayName = new Intl.DateTimeFormat("en-US", {
             weekday: "long",
         }).format(date);
-        console.log(dayName)
         fiveDaysForecast.push({
             formattedDate: formatedDate,
             dayName: dayName,
