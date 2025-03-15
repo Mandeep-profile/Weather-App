@@ -2,8 +2,9 @@ import React, { useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from "../../Assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { useAppContext } from "../Context/AppContext"
+import { useThemeContext } from '../Context/ThemeContext';
 import "./Header.css";
 
 const debounce = (func, delay) => {
@@ -18,6 +19,7 @@ const Header = () => {
 
   const inputRef = useRef(null)
   const { searchResults, setSearchResults, setQuery, setLatitude, setLongitude } = useAppContext();
+  const { isDarkMode, ToggleTheme}= useThemeContext()
 
   const handleInputChange = useCallback(
     debounce((event) => {
@@ -62,10 +64,9 @@ const Header = () => {
             </div>
           ))}
         </div>
-
       </div>
-      <button className="locationbtn">
-        <FontAwesomeIcon icon={faLocationDot} /> Current Location
+      <button className='toggleBtn' onClick={ToggleTheme}>
+        {<FontAwesomeIcon size='2x' icon={isDarkMode ? faMoon : faSun} />}
       </button>
     </header>
   );

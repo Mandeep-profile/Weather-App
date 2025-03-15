@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from "../Header/Header"
 import Now from '../Now/Now'
 import Highlight from '../Highlight/Highlight'
@@ -8,8 +8,9 @@ import Footer from "../Footer/Footer"
 import "./Layout.css"
 
 const Layout = () => {
+
     return (
-        <div className='layout-main'>
+        <div className = "layout-main">
             <main className='main'>
                 <Header />
             </main>

@@ -11,6 +11,20 @@
   --transition: 0.3s;
 }
 
+body {
+  --back-ground-color: #ffffff;
+  --boxes-colors: #f0f0f0;
+  --boxes-colors2: #e0e0e0;
+  --search-color: #f9f9f9;
+  --main-text-color: #000000;
+  --sec-text-color: #333333;
+  --input-hover: #dddddd;
+  --transition: 0.3s;
+  background-color: var(--back-ground-color);
+  color: var(--main-text-color);
+  transition: background-color var(--transition), color var(--transition);
+}
+
 body.dark {
   --back-ground-color: #101014;
   --boxes-colors: #1b1a1d;
