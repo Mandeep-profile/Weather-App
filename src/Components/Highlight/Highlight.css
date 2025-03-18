@@ -53,5 +53,5 @@
 
 .subheading{
     font-size: 14px;
-    color: var(--sec-text-color);
+    /* color: var(--sec-text-color); */
 }

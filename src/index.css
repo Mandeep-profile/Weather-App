@@ -17,8 +17,7 @@ body {
   --boxes-colors2: #e0e0e0;
   --search-color: #f9f9f9;
   --main-text-color: #000000;
-  --sec-text-color: #333333;
-  --input-hover: #dddddd;
+  --sec-text-color: #FEFE;
   --transition: 0.3s;
   background-color: var(--back-ground-color);
   color: var(--main-text-color);

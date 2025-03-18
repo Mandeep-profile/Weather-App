@@ -1,65 +1,65 @@
-.nowMain{
-    background-color: var(--boxes-colors);
-    color: var(--boxes-colors-2);
-    max-height: 300px;
-    border-radius: 30px;
-    padding: 30px;
+.nowMain {
+  background-color: var(--boxes-colors);
+  color: var(--boxes-colors-2);
+  max-height: 300px;
+  border-radius: 30px;
+  padding: 30px;
 }
 
-.nowdiv{
-    font-weight: 900;
-    text-align: left;
-    margin-bottom: 10px;
+.nowdiv {
+  font-weight: 900;
+  text-align: left;
+  margin-bottom: 10px;
 }
 
-.tempsection{
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.tempsection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.nowheading{
-    font-size: 20px;
+.nowheading {
+  font-size: 20px;
 }
 
-.currenttemp{
-    font-size: 48px;
+.currenttemp {
+  font-size: 48px;
 }
 
-.iconimg{
-    width: 75px;
+.iconimg {
+  width: 75px;
 }
 
-.tempdescription{
-    color: var(--sec-text-color);
-    font-size: 14px;
-    text-transform: capitalize;
+.tempdescription {
+  /* color: var(--sec-text-color); */
+  font-size: 14px;
+  text-transform: capitalize;
 }
 
-.horizontalline{
-    margin-top: 35px;
-    border: 1px solid rgba(0, 0, 0, 0.44);
+.horizontalline {
+  margin-top: 35px;
+  border: 1px solid rgba(0, 0, 0, 0.44);
 }
 
-.datediv{
-    margin-top: 20px;
-    display: flex;
-    align-items: end;
-    justify-content: left;
-    gap: 10px;
-    font-size: 14px;
-    color: var(--sec-text-color);
+.datediv {
+  margin-top: 20px;
+  display: flex;
+  align-items: end;
+  justify-content: left;
+  gap: 10px;
+  font-size: 14px;
+  /* color: var(--sec-text-color); */
 }
 
-.locationdiv{
-display: flex;
-align-items: end;
-justify-content: left;
-gap: 10px;
-font-size: 14px;
-color: var(--sec-text-color);
+.locationdiv {
+  display: flex;
+  align-items: end;
+  justify-content: left;
+  gap: 10px;
+  font-size: 14px;
+  /* color: var(--sec-text-color); */
 }
 
-.location{
-    margin-top: 20px;
+.location {
+  margin-top: 20px;
 }

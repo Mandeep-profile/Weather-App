@@ -22,7 +22,7 @@ const ThemeProvider = ({ children }) => {
         } else {
             document.body.classList.remove("dark", isDarkMode);
         }
-    }, [isDarkMode])
+    }, [isDarkMode]) 
 
     return <ThemeContext.Provider value={{ isDarkMode, ToggleTheme }}>{children}</ThemeContext.Provider>
 }
